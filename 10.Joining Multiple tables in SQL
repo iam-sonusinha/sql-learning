@@ -1,0 +1,11 @@
+Joining multiple tables in SQL
+Decision tree
+Only Matching Inner Join
+All rows One side(Master Join) Left Join (Fav)
+ 	 Both Sides(Full Join) Full Join
+Only Unmatching
+ 	One Side(Master table) Left Anti Join
+ 	Both Side(Both Important Full Anti Join
+1.Recombine data
+ 	All customers details in One
+2.tea
