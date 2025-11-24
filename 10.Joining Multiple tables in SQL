@@ -1,11 +1,82 @@
-Joining multiple tables in SQL
-Decision tree
-Only Matching Inner Join
-All rows One side(Master Join) Left Join (Fav)
- 	 Both Sides(Full Join) Full Join
-Only Unmatching
- 	One Side(Master table) Left Anti Join
- 	Both Side(Both Important Full Anti Join
-1.Recombine data
- 	All customers details in One
-2.tea
+✅ PART 1 — NOTES (EASY-TO-UNDERSTAND EXPLANATION)
+📌 Topic: Joining Multiple Tables in SQL (3 or More Tables)
+1️⃣ What is Joining Multiple Tables?
+
+When data is stored in different tables, we use JOINs to combine them into one result.
+Joining 3+ tables is just like joining 2 tables — you simply add more JOIN statements.
+
+2️⃣ Why Do We Join Multiple Tables?
+
+Real-world data is split into many related tables.
+
+To answer questions like:
+“Which customer bought which product and at what price?”
+You need data from Customers + Orders + OrderItems + Products → 4 tables.
+
+3️⃣ How Joins Work (Video Explanation)
+
+A JOIN connects rows from one table to another using a common column:
+
+customer_id
+
+order_id
+
+product_id
+These act like “bridges” between tables.
+
+4️⃣ Common Types of JOINS Used
+INNER JOIN
+
+Shows only matching rows between tables.
+
+If no match → row is excluded.
+
+LEFT JOIN
+
+Shows all rows from the first table and matched rows from the second.
+
+If no match → values become NULL.
+
+RIGHT JOIN
+
+Opposite of LEFT JOIN.
+
+FULL OUTER JOIN
+
+Shows everything from both tables (matching + non-matching).
+
+5️⃣ Joining More Than Two Tables
+
+Structure looks like this:
+
+FROM table1
+JOIN table2 ON conditions
+JOIN table3 ON conditions
+JOIN table4 ON conditions
+
+
+SQL reads joins one at a time, left to right.
+
+Each join needs a proper join condition.
+
+Missing condition → wrong output or too many rows.
+
+6️⃣ What to Be Careful About
+
+Always join using the correct key.
+
+Outer joins produce NULL values — handle them carefully.
+
+Joining many tables can be slow → indexing helps.
+
+Use aliases (c, o, oi, p) to make queries readable.
+
+7️⃣ Best Practices
+
+Join only required tables.
+
+Select only required columns.
+
+Use GROUP BY when aggregating (sum, count).
+
+Test query output using smaller datasets first.
