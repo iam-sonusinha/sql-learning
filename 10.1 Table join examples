@@ -1,0 +1,75 @@
+✅ PART 2 — EXAMPLES (ALL SQL QUERIES SEPARATELY)
+
+Here are easy and clean examples of SQL queries joining 3–4 tables.
+
+🧪 Example 1 — Joining 2 Tables (Basic Start)
+
+Get customers and their order details:
+
+SELECT c.customer_id, c.name, o.order_id, o.order_date
+FROM Customers c
+INNER JOIN Orders o
+    ON c.customer_id = o.customer_id;
+
+🧪 Example 2 — Joining 3 Tables
+
+Find total items ordered by each customer:
+
+SELECT
+    c.customer_id,
+    c.name,
+    o.order_id,
+    SUM(oi.quantity) AS total_items
+FROM Customers c
+INNER JOIN Orders o
+    ON c.customer_id = o.customer_id
+INNER JOIN OrderItems oi
+    ON o.order_id = oi.order_id
+GROUP BY
+    c.customer_id, c.name, o.order_id;
+
+🧪 Example 3 — Joining 4 Tables
+
+Show customers → orders → items → product details:
+
+SELECT
+    c.name AS customer_name,
+    o.order_id,
+    o.order_date,
+    p.product_name,
+    oi.quantity,
+    oi.unit_price
+FROM Customers c
+INNER JOIN Orders o
+    ON c.customer_id = o.customer_id
+INNER JOIN OrderItems oi
+    ON o.order_id = oi.order_id
+INNER JOIN Products p
+    ON oi.product_id = p.product_id;
+
+🧪 Example 4 — LEFT JOIN with 3 Tables
+
+Show all customers, even if they have no orders:
+
+SELECT
+    c.customer_id,
+    c.name,
+    o.order_id,
+    oi.product_id
+FROM Customers c
+LEFT JOIN Orders o
+    ON c.customer_id = o.customer_id
+LEFT JOIN OrderItems oi
+    ON o.order_id = oi.order_id;
+
+
+(If a customer has no order → order_id becomes NULL)
+
+🧪 Example 5 — FULL JOIN Example
+
+Show all customers + all orders (even unmatched):
+
+SELECT *
+FROM Customers c
+FULL OUTER JOIN Orders o
+    ON c.customer_id = o.customer_id;
