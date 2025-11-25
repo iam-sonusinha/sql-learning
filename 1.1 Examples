@@ -1,0 +1,53 @@
+EXAMPLES (Simple SQL Queries & Use Cases)
+Here are basic SQL examples (for a hypothetical simple table setup) to show how SQL works in practice.
+
+Assume we have a table called Users:
+Users
+-------------------------
+user_id | name   | age | city
+-------------------------
+1       | Alice  | 25  | Mumbai
+2       | Bob    | 30  | Delhi
+3       | Carol  | 22  | Pune
+
+Example A — Select (Read) Data
+Get all user names and their cities:
+SELECT name, city
+FROM Users;
+
+Expected result:
+name	city
+Alice	Mumbai
+Bob	Delhi
+Carol	Pune
+
+Example B — Select with Condition
+Get users who are older than 24:
+SELECT user_id, name, age
+FROM Users
+WHERE age > 24;
+
+Result:
+user_id	name	age
+1	Alice	25
+2	Bob	30
+Example C — Insert Data (Add a Row)
+
+Add a new user:
+INSERT INTO Users (user_id, name, age, city)
+VALUES (4, 'Dave', 28, 'Kolkata');
+After insertion, the Users table will include Dave.
+
+Example D — Update Data
+Change user’s city for a specific user:
+UPDATE Users
+SET city = 'Pune'
+WHERE user_id = 2;
+
+This will change Bob’s city from Delhi → Pune.
+
+Example E — Delete Data
+Remove a user from the table:
+DELETE FROM Users
+WHERE user_id = 3;
+This deletes Carol’s row.
