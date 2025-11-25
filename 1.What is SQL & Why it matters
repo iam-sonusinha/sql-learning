@@ -1,0 +1,24 @@
+✅ PART 1 — NOTES (CONCEPTS: What is SQL & Why It Matters)
+🔹 What is SQL
+
+SQL stands for Structured Query Language — a special language used to talk to databases. 
+With SQL you can create, read, update, or delete data stored in tables (database operations). 
+
+In short: SQL lets you manage and retrieve data from databases in a structured and standardized way. 
+🔹 Why SQL is Important / When We Use It
+    Databases widely used in applications (websites, apps, business systems) store data in tables.
+    SQL gives a consistent way to ask questions or get data: e.g. “Give me all users who signed up after Jan 2025”, or “What are all orders above ₹1000?”, etc.
+    Because SQL is standard and widely supported, learning SQL helps you work with almost any relational database (like MySQL, PostgreSQL, SQL Server, etc.).
+🔹 SQL: Data-centric — not code-centric
+    Unlike general-purpose programming languages (Java, Python), SQL is declarative: you specify what you want (e.g. “select these rows where condition X”), not necessarily how to fetch them. This makes it simpler for data tasks.
+🔹 Typical Things You Do with SQL
+  Create a new database / table.
+  Insert data (rows) into a table.
+  Query data (read): get specific rows/columns.
+  Update data (change existing data).
+  Delete data (remove rows).
+  These operations make SQL a full toolkit for database data management.
+🔹 Why “Visually Explained” Helps
+Visual diagrams of tables and data relationships make it easier to understand how tables store data, and how queries retrieve it.
+
+For beginners, seeing tables as “grids” helps you grasp how SQL selects and filters data.
