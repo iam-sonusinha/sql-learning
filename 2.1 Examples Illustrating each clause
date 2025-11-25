@@ -1,0 +1,77 @@
+PART 2 — EXAMPLES (SQL Queries Illustrating Each Clause)
+
+Assume the following simple table:
+Employees
+-----------------------------
+employee_id | name     | dept  | salary
+-----------------------------
+1           | Alice    | HR    | 50000
+2           | Bob      | Sales | 60000
+3           | Carol    | Sales | 65000
+4           | Dave     | HR    | 55000
+5           | Eve      | IT    | 70000
+
+Example 1 — Basic SELECT & FROM
+SELECT name, salary
+FROM Employees;
+
+Result: All employees’ names and salaries.
+
+Example 2 — Adding WHERE
+SELECT employee_id, name, dept
+FROM Employees
+WHERE dept = 'Sales';
+
+Result: Only those in the Sales department.
+
+Example 3 — Using ORDER BY
+SELECT name, salary
+FROM Employees
+WHERE salary > 55000
+ORDER BY salary DESC;
+
+Result: Employees with salary > 55000, sorted highest salary first.
+
+Example 4 — Using GROUP BY + Aggregate
+
+Suppose we want average salary by department:
+SELECT dept,
+       AVG(salary) AS avg_salary
+FROM Employees
+GROUP BY dept;
+
+Result: Each department with its average salary.
+
+Example 5 — Using HAVING after GROUP BY
+
+List departments where average salary is above 60000:
+SELECT dept,
+       AVG(salary) AS avg_salary
+FROM Employees
+GROUP BY dept
+HAVING AVG(salary) > 60000;
+
+Result: Only departments meeting the average salary threshold.
+
+Example 6 — SELECT * with caution
+SELECT *
+FROM Employees
+WHERE dept = 'HR';
+
+Result: All columns for HR employees.
+Note: Use SELECT * only when you genuinely need all columns.
+
+Example 7 — Combining many clauses
+SELECT dept,
+       COUNT(*) AS total_employees,
+       MAX(salary) AS highest_salary
+FROM Employees
+WHERE salary > 50000
+GROUP BY dept
+HAVING COUNT(*) > 1
+ORDER BY highest_salary DESC;
+
+Result:
+Departments with more than 1 employee > 50000 salary,
+
+Shows how many employees, the highest salary, sorted by highest salary.
