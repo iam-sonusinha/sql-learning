@@ -1,0 +1,34 @@
+✅ PART 2 — NOTES (Concepts: The SELECT Statement & Clauses)
+Breakdown of the key components/clauses inside a SELECT statement.
+
+Visual explanation of how data is retrieved from tables via SELECT.
+🔹 Key Clauses of SELECT
+  SELECT: What columns you want to see.
+  FROM: Which table(s) you are pulling data from.
+  WHERE: (Optional) Filter the rows by some condition.
+  GROUP BY: (Optional) Aggregate rows sharing a common attribute.
+  HAVING: (Optional) Filter after grouping.
+  ORDER BY: (Optional) Sort the results.
+  LIMIT / TOP: (Optional) Restrict number of rows (depending on SQL dialect).
+
+🔹 How it works (visually)
+Imagine a table as a spreadsheet with rows and columns.
+SELECT column1, column2 → pick the columns you want.
+FROM table → specify the table to look into.
+WHERE condition → choose only rows where the condition holds true.
+If using GROUP BY, think of collapsing rows by a chosen column and then applying aggregates (SUM, COUNT, etc.).
+ORDER BY sorts by a column (ascending/descending).
+You can combine multiple clauses to form powerful queries.
+
+🔹 Why understanding SELECT thoroughly matters
+It’s the most frequently used SQL statement.
+Almost every data retrieval task begins with SELECT.
+Without selecting correctly, your downstream operations (joins, aggregates, analytics) may be wrong.
+
+🔹 Tips & things to watch
+When you use SELECT *, you fetch all columns — but only use if truly needed (performance & readability).
+Always qualify column names if multiple tables with joins are used (to avoid ambiguity).
+Use meaningful aliases for tables and columns for clarity.
+If using GROUP BY, any non-aggregated column must appear in GROUP BY.
+WHERE filters before grouping; HAVING filters after grouping.
+Sorting large result sets might slow performance; only sort if needed.
