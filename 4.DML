@@ -1,0 +1,72 @@
+✅ PART 1 — NOTES (Concepts Covered in the Video: DML / INSERT & Data Manipulation)
+🔹 What is DML in SQL
+Through DML you can insert, update, or delete rows in your tables (i.e. add new data, change existing data, or remove data).
+
+🔹 Focus on INSERT — Adding Data
+The video shows how to use the INSERT command to add new rows into a table. 
+YouTube
+
+INSERT is fundamental: once you define a table schema (columns), INSERT lets you fill that table with actual data.
+🔹 Other DML Operations (Context)
+Though the video focuses on INSERT, “DML” in general includes:
+INSERT — add new data
+UPDATE — modify existing data
+DELETE — remove existing data
+Using these you manage and maintain the data stored in the database tables.
+
+🔹 Why DML (and INSERT) is Important
+Databases become useful only when populated — INSERT uploads data so queries can retrieve meaningful info.
+For dynamic applications (like apps, websites), DML operations allow users to add or update records (e.g. sign-ups, orders, logs).
+Understanding DML is critical if you want to build or maintain real-world databases, not just read data.
+
+📝 PART 2 — EXAMPLES (SQL Commands for INSERT / UPDATE / DELETE)
+Assume we have a table Students defined as:
+Students
+---------------------------
+student_id | name    | age | city
+---------------------------
+
+✅ Example A — INSERT: Adding a New Row
+Add a new student:
+INSERT INTO Students (student_id, name, age, city)
+VALUES (1, 'Alice', 20, 'Mumbai');
+
+After this command, the table will have a row for Alice, age 20, city Mumbai.
+✅ Example B — INSERT: Multiple Rows (if supported)
+Add two new students at once:
+INSERT INTO Students (student_id, name, age, city)
+VALUES
+  (2, 'Bob', 22, 'Delhi'),
+  (3, 'Charlie', 21, 'Pune');
+
+This inserts Bob and Charlie at once.
+
+✅ Example C — UPDATE: Change Existing Data
+Suppose Alice moves to a new city. Update her city:
+UPDATE Students
+SET city = 'Pune'
+WHERE student_id = 1;
+
+This finds the row where student_id = 1 and updates city to 'Pune'.
+
+✅ Example D — DELETE: Remove a Row
+Remove a student record (say delete Bob’s record):
+DELETE FROM Students
+WHERE student_id = 2;
+This removes the row of student with student_id = 2.
+
+✅ Example E — INSERT Without Specifying All Columns (If Table Allows)
+If table Students has an additional optional column (say email) which can be NULL, you can insert with only required columns:
+INSERT INTO Students (student_id, name, age, city)
+VALUES (4, 'Dave', 23, 'Kolkata');
+
+Other columns (like email) will remain NULL or default.
+
+✅ KEY TAKEAWAYS (What to Remember)
+DML (Data Manipulation Language) is used to change data inside tables (not just read).
+With INSERT you add new rows; with UPDATE you change existing rows; with DELETE you remove rows.
+Always ensure columns and values match in data type and order when inserting.
+Use WHERE clause carefully in UPDATE and DELETE — without it, you might update/delete all rows inadvertently.
+Insert only needed columns — optional columns can be omitted if allowed by schema.
+If you like — I can also produce a mini-cheat sheet for all DML commands (INSERT, UPDATE, DELETE, maybe TRUNCATE), with syntax templates + examples + common pitfalls — that can help you practice and refer easily.
+Do you want me to build that for you now?
