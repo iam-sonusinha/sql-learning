@@ -1,0 +1,91 @@
+✅ PART 1 — NOTES (Concepts Covered: SQL Constraints & Data Integrity
+🔹 Common Types of Constraints
+Here are the main constraints discussed:
+Constraint	Purpose / What it does
+PRIMARY KEY	Ensures each row is uniquely identified. No duplicate or NULL values allowed in that column (or combination of columns).
+UNIQUE	Ensures all values in a column (or set of columns) are unique — no duplicates.
+NOT NULL	Ensures a column cannot have NULL (empty) values — every row must have a value.
+FOREIGN KEY	Links a column in one table to the primary key of another table — enforcing referential integrity (valid relationships between tables).
+CHECK	Allows specifying a condition that values in a column must satisfy (e.g. age > 0).
+DEFAULT	Provides a default value for a column if no value is specified on insert.
+
+🔹 Why Constraints Are Important
+They keep data consistent, valid, and meaningful — prevent duplicates, missing values, invalid references.
+Help enforce relationships between tables — e.g. ensuring an order belongs to a valid customer.
+Avoid logical/data errors — e.g. disallowing NULLs in mandatory fields, preventing duplicate user IDs.
+Makes database more reliable, easier to maintain and query.
+
+🔹 How Constraints Are Defined
+Constraints are set when you CREATE TABLE, by specifying rules after column definitions.
+Some can also be added (or altered) later using ALTER TABLE.
+Using constraints is better than manually checking data on application logic — database does the enforcement.
+
+📝 PART 2 — EXAMPLES (SQL Table Definitions & Use Cases with Constraints)
+Below are example table definitions and data operations illustrating common constraints.
+✅ Example A — Defining a Table with PRIMARY KEY, NOT NULL, UNIQUE
+CREATE TABLE Users (
+    user_id INT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    age INT,
+    created_at DATE DEFAULT CURRENT_DATE
+);
+
+What this does:
+user_id uniquely identifies each user (no duplicates, no NULL).
+username must be unique and cannot be empty (NULL).
+email cannot be NULL.
+created_at will default to today’s date if not provided.
+
+✅ Example B — FOREIGN KEY Constraint (Referential Integrity)
+Assume we have another table Orders linked to Users:
+
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    user_id INT,
+    order_date DATE NOT NULL,
+    amount DECIMAL(10,2),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+
+What happens:
+user_id in Orders must match an existing user_id in Users — you cannot have an order for a non-existent user.
+Prevents orphan orders and maintains relational integrity.
+
+✅ Example C — CHECK Constraint & DEFAULT
+CREATE TABLE Products (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(100) NOT NULL,
+    price DECIMAL(8,2) CHECK (price >= 0),
+    status VARCHAR(20) DEFAULT 'active'
+);
+
+
+price cannot be negative (must be ≥ 0).
+If you don’t specify status on insert, it defaults to 'active'.
+
+✅ Example D — Inserting Data (Respecting Constraints)
+Valid insertion:
+INSERT INTO Users (user_id, username, email, age) 
+VALUES (1, 'alice01', 'alice@example.com', 28);
+Invalid insertion (will fail):
+INSERT INTO Users (user_id, username, email) 
+VALUES (2, 'alice01', NULL);
+
+— fails because username must be unique (alice01 already used) and email cannot be NULL.
+
+✅ Example E — Trying to Insert Invalid Foreign Key
+INSERT INTO Orders (order_id, user_id, order_date, amount) 
+VALUES (100, 999, '2025-12-03', 150.00);
+
+— fails because user_id = 999 doesn’t exist in Users (violates FOREIGN KEY constraint).
+
+✅ KEY TAKEAWAYS & Best Practices
+Always define PRIMARY KEY to uniquely identify rows.
+Use NOT NULL for mandatory fields (e.g. name, email).
+Use UNIQUE for columns that must be distinct (e.g. username, email).
+Use FOREIGN KEY to link related tables and enforce relationships.
+Use CHECK and DEFAULT to enforce valid data and defaults automatically.
+
+Constraints help reduce errors, ensure data validity, and simplify application logic — rely on database constraints rather than manual checks when possible.
